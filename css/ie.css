@@ -1,0 +1,24 @@
+#content_wrapper .sidebar .content .sidebar_widget li h2.widgettitle, h2.widgettitle
+{
+	width: 90%;
+}
+
+#content_wrapper .inner .inner_wrapper.fullwidth h2.widgettitle.header
+{
+	width: 97%;
+}
+
+#content_wrapper .inner .inner_wrapper .sidebar_content h2.widgettitle.header
+{
+	width: 94%;
+}
+
+.flexslider_excerpt
+{
+	width: 100%;
+}
+
+.post_wrapper
+{
+	padding-bottom: 20px;
+}
