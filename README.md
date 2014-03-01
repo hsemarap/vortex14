@@ -1,0 +1,3 @@
+VORTEX '14 - The Annual National Level Technical Symposium of Dept of CSE, NIT, Trichy.
+
+Vortex '14 - A dais wherein the ardent techno-geeks from across the nation can exhibit their passion for technology by partaking in a wave of mind-boggling events and gain an insight into the novel advancements in the ever-changing world of Information Technology and Computer Science through numerous eye-opener sessions of Guest Lectures by Eminent Personalities in the corresponding realms and Workshops offering practical knowledge on the latest technologies.
