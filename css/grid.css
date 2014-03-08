@@ -2,8 +2,13 @@
 #Tablet (Portrait)
 ================================================== 
 */
-
+#rightmenu{
+position: absolute;
+right: 3%;
+padding-top: 5px;
+}
 @media only screen and (min-width: 768px) and (max-width: 960px) {
+	#rightmenu {position: relative;}
 	body { font-size: 13px; }
 	#boxed_wrapper { width: 766px; }
 	#option_btn { display: none; }
@@ -114,6 +119,7 @@
 */
 
 @media only screen and (max-width: 767px) {
+	#rightmenu {position: relative;}
 	h2 { font-size: 22px; }
 	body { font-size: 13px; }
 	#boxed_wrapper { width: 318px; margin-top: -20px; }
@@ -296,6 +302,7 @@
 */
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+	#rightmenu {position: relative;}
 	#boxed_wrapper { width: 480px; margin-top: -20px; }
 	#header_wrapper .social_wrapper { display: block; }
 	#top_menu li { font-size: 14px; }

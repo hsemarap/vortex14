@@ -13,6 +13,7 @@ global $pageId,$userId;
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
     <title><?php $cmstitle=$TITLE;echo $cmstitle; ?></title>
     <?php if(isset($WIDGETS[0])) echo $WIDGETS[0]; ?>
     <meta name="description" content="<?php echo $SITEDESCRIPTION ?>" />
@@ -23,7 +24,8 @@ global $pageId,$userId;
 	?>
     <link rel="index" href="./" title="Home" />
 
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo $TEMPLATEBROWSERPATH; ?>/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $TEMPLATEBROWSERPATH; ?>/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $TEMPLATEBROWSERPATH; ?>/css/error.css" />
 <link rel="shortcut icon" href="<?php echo $TEMPLATEBROWSERPATH; ?>/images/vortex_logo.png" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
@@ -83,20 +85,31 @@ h2.breaking, .flex-control-nav li a:hover, .flex-control-nav li a.active, .post_
 }
 #slider_wrapper
 {
-	border-top: 5px solid #1bc4de; 
+	/*border-top: 5px solid #1bc4de;*/border-bottom: 5px solid #1bc4de;  
 }
 body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) repeat top left;}
 .breaking_new { margin-top: 15px; }
 </style>
 </head>
 <body class="home blog" onload="<?php echo $STARTSCRIPTS; ?>" >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=124148371088993";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<input type="hidden" id="pp_homepage_slider_trans" name="pp_homepage_slider_trans" value="fade"/>
 	<input type="hidden" id="pp_homepage_url" name="pp_homepage_url" value="/"/>	
 	<div id="wrapper">			
 		<div id="header_wrapper">
 			<div class="standard_wrapper">
-				<div class="menu-main-menu-container"><ul id="main_menu" class="main_nav"><li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-533"><a href="/">Home</a></li>
-<li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534"><a href="#">About Vortex</a>
+				<div class="menu-main-menu-container"><ul id="main_menu" class="main_nav" style="width:auto">
+				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:15px'>Vortex</h1></a></li>
+				<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-533"><a href="/">Home</a></li>
+<!--
+<li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534"><a href="#footer">About Vortex</a>
 <ul class="sub-menu">
 	<li id="menu-item-536" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-536">
 	<a href="">Events</a>	</li>
@@ -110,6 +123,7 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 	<a href="">Gallery</a></li>
 </ul>
 </li>
+-->
 </ul>
 </div>			
 				<div id="menu_border_wrapper"></div>
@@ -135,14 +149,14 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 			</style>
 <?php if($pageId==0)echo "					
-				<a id='custom_logo' href='./'><img src='$TEMPLATEBROWSERPATH/images/vortex_logo.png' class='rotate_once' alt=''/></a>
+<!--				<a id='custom_logo' href='./'><img src='$TEMPLATEBROWSERPATH/images/vortex_logo.png' class='rotate_once' alt=''/></a>
 			        <div class='logo_tagline' style='font-size:1.5em'>
 			        <h1 style='display:inline;margin-right:20px;font-size:2em;'>Vortex</h1><br>
 			        The Annual National Level Technical Symposium of Dept of CSE</div>
-			        ";
+-->			        ";
 else echo "			        
-				<a id='custom_logo' href='./'><img src='$TEMPLATEBROWSERPATH/images/vortex_logo.png' class='rotate_once' alt=''/></a>
-					<div class='header_text logo_tagline' style='font-size:1.5em'>
+<!--				<a id='custom_logo' href='./'><img src='$TEMPLATEBROWSERPATH/images/vortex_logo.png' class='rotate_once' alt=''/></a>
+-->					<div class='header_text logo_tagline' style='font-size:1.5em'>
 								<h1 style='display:inline;margin-right:20px;font-size:2em;'>
 								$cmstitle</h1>
 					</div>
@@ -194,13 +208,16 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 		<script>
 		$=$j;
 		$(function(){
+			var cmscontent=$("#cms-content").detach();
+			$("#content_wrapper").before(cmscontent);
 			var breadcrumb=$(".cms-breadcrumbsubmenu").detach();
 			$(".cms-actionlogin").live('click',function(e){
 				$("#loginpanel").fadeIn("slow");
 				e.stopPropagation();
     			e.preventDefault();
 			});
-			$(".topnav li").each(function(){
+			$(".div_topnav:first .topnav li").each(function(){
+				$(this).addClass("menu-item menu-item-type-custom menu-item-object-custom");
 				$("#main_menu").append($(this));
 			});
 			$(".cms-actionbarModuleItem").each(function(){
@@ -213,8 +230,8 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 			});
 			// if page has sub pages
 			if($(".div_topnav").length>1){
-				var pagename=$(".cms-menuhead").html();
-				$("#cms-page-name").html(pagename);
+				//var pagename=$(".cms-menuhead").html();
+				//$("#cms-page-name").html(pagename);
 				$(".div_topnav:last .topnav li").each(function(){
 					$("#cms-subpages").append("<li><strong class='title'>"+$(this).html()+"</strong><br/></li>")
 				});
@@ -270,33 +287,12 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 
 		});
 		</script>
-			<div id="cms-content">
-				<?php echo $INFOSTRING; ?>
-				<?php echo $WARNINGSTRING;?>
-				<?php echo $ERRORSTRING; ?>
-				<?php if(isset($WIDGETS[2])) echo $WIDGETS[2]; ?>
-				<?php echo $CONTENT; ?>
-				<?php if(isset($WIDGETS[3])) echo $WIDGETS[3]; ?>
-			</div>
 	
 		<div id="content_wrapper">
 			
 			<div class="inner">
 			
 				<div class="inner_wrapper">				
-
-					<div class="sidebar_wrapper" id='rightmenu' style="position:fixed;right:0px;top:8%">
-						<div class="sidebar" style='width:40%;'>					    
-					    	<div class="content">					    
-					    		<ul class="sidebar_widget">
-					    		<li id="custom_cat_posts-2" class="widget Custom_Cat_Posts">
-					    		<ul class="posts">
-					    		</ul>
-					    		<br class="clear"></li>
-					    	</div>					
-					    </div>
-					    <br class="clear">
-					</div>
 <!--
 <div id="slider_wrapper" class="fullslide">
  
@@ -372,6 +368,7 @@ $j(window).load(function() {
       	}
     });
 });</script> 
+
  					<div class="sidebar_content">																
 						<div class="post_wrapper">    	
     						<div class="post_inner_wrapper">
@@ -381,37 +378,55 @@ $j(window).load(function() {
 							        </div>
 							    </div>						    
 							    <div class="post_wrapper_inner" id='cms-first-text'>							    
+			<div id="cms-content">
+				<?php echo $INFOSTRING; ?>
+				<?php echo $WARNINGSTRING;?>
+				<?php echo $ERRORSTRING; ?>
+				<?php if(isset($WIDGETS[2])) echo $WIDGETS[2]; ?>
+				<?php echo $CONTENT; ?>
+				<?php if(isset($WIDGETS[3])) echo $WIDGETS[3]; ?>
+			</div>
 
 								</div>    
 							</div>
 						</div>
 						<br class="clear">
 					</div>
+					<div class="sidebar_wrapper" id='rightmenu' style="/*right:1%;top:76%;position: absolute;*/">
+						<div class="sidebar" style='width:40%;'>					    
+					    	<div class="content">					    
+					    		<ul class="sidebar_widget">
+					    		<li id="custom_cat_posts-2" class="widget Custom_Cat_Posts">
+					    		<ul class="posts">
+					    		</ul>
+					    		<br class="clear"></li>
+					    	</div>					
+					    </div>
+					    <br class="clear">
+					</div>
+
 					<div class="sidebar_wrapper">
 						<div class="sidebar">					    
 					    	<div class="content">					    
 					    		<ul class="sidebar_widget">
 					    		<li id="cms-subpage-bar" class="widget">
-					    		<h2 class="widgettitle" id='cms-page-name'></h2>
+					    		<h2 class="widgettitle" id='cms-page-name'>
+					    			<?php echo $cmstitle?>
+					    		</h2>
 					    		<ul class="posts" id='cms-subpages'>
-					    		<li><strong class="title"><a href="#">Sub Page 1</a></strong><br/></li>
+					    		
 					    		</ul>
 					    		<br class="clear"/></li>
 <li id="custom_social_counter-2" class="widget Custom_Social_Counter">		    <div class="social_profile">
-		        <div class="profile first">
-		        	<div class="counter">
-		        		<h4>Like us on Facebook</h4>
-		        		<span class="count">&lt; Like Button &gt;</span>
-		        	</div>
-		        </div>
-		        <div class="profile">
-		        	<a href="http://facebook.com/vortex.nitt">
+					<div class="post_header" style="width:100%;padding:0;margin:0">
+			        	<h3>Like us on Facebook</h3>
+			        </div>
+					<div class="profile">
+<!--		        	<a href="http://facebook.com/vortex.nitt">
 		        		<img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt="" class="social"/>
 		        	</a>
-		        	<div class="counter">
-		        		<h4>&lt; FB Like Count &gt;</h4>
-		        		<span class="count">fans</span>
-		        	</div>
+-->		        	<div class="counter">
+<div class="fb-like" data-href="https://www.facebook.com/vortex.nitt" data-width="10" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>		        	</div>
 		        </div>
 		    </div>
 </li>
@@ -428,7 +443,7 @@ $j(window).load(function() {
 					    <br class="clear"/>
 
 					</div>
-					
+
 					<br class="clear"/>
 				</div>
 				
@@ -442,8 +457,8 @@ $j(window).load(function() {
 		
 		<div id="footer">
 			<ul class="sidebar_widget">
-				<li id="text-3" class="widget widget_text"><h2 class="widgettitle">About Us</h2>
-			<div class="textwidget">Vortex '14 - A dais wherein the ardent techno-geeks from across the nation can exhibit their passion for technology by partaking in a wave of mind-boggling events and gain an insight into the novel advancements in the ever-changing world of Information Technology and Computer Science through numerous eye-opener sessions of Guest Lectures by Eminent Personalities in the corresponding realms and Workshops offering practical knowledge on the latest technologies.
+				<li id="text-3" class="widget widget_text"><h2 class="widgettitle">About Vortex</h2>
+			<div class="textwidget">Vortex '14 - Footer Text
 <br/><br/>
 </div>
 		</li>
@@ -452,7 +467,8 @@ $j(window).load(function() {
 		</div>		
 		<div id="copyright">
 			<div class="standard_wrapper wide">
-			<div class="social_wrapper">
+			<div id="copyright_left" style="float:center">Copyright &copy; 2014 Vortex '14. All rights reserved.</div>
+			<div class="social_wrapper" style="bottom: 25px;position: relative;">
 			    <ul>
 					<li><a href="http://twitter.com/"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/twitter.png" alt=""/></a></li>
 					<li><a href="http://facebook.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt=""/></a></li>

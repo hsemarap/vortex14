@@ -348,7 +348,7 @@ $j(document).ready(function(){
 	   "text"    : "- Main Menu -"
 	}).appendTo("#menu_border_wrapper select");
     
-    $j(".main_nav li").each(function() {
+    $j(".main_nav li,.div_topnav:first .topnav li").each(function() {
 		var current_item = $j(this).hasClass('current-menu-item'); 
 		var el = $j(this).children('a');
 		var menu_text = el.text();
