@@ -106,7 +106,7 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 		<div id="header_wrapper">
 			<div class="standard_wrapper">
 				<div class="menu-main-menu-container"><ul id="main_menu" class="main_nav" style="width:auto">
-				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:15px'>Vortex</h1></a></li>
+				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:15px'>Vortex 14</h1></a></li>
 				<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-533"><a href="/">Home</a></li>
 <!--
 <li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534"><a href="#footer">About Vortex</a>
