@@ -813,7 +813,7 @@ ul.children #respond
 	height: 50px;
 	z-index: 999;
 	float: left;
-	border-left: 1px solid #EBEBEC;
+	border-left: 0px solid #EBEBEC!important;
 }
 
 .main_nav ul li,  .main_nav li
