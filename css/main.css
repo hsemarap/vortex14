@@ -1,0 +1,40 @@
+div.cms-info {
+line-height: 20px;
+background-image: url('../images/cms_info.png');
+background-color: white!important;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border: 2px #1bc4de solid!important;
+color: black;
+}
+div.cms-info a,div.cms-error a,div.cms-warning a {
+background: #DDD;
+color: black!important;
+text-decoration: none!important;
+padding: 1px 3px;
+border: solid 1px #DDF;
+}
+div.cms-info a:hover,div.cms-error a:hover,div.cms-warning a:hover {
+background: #AAA!important;
+}
+.sidebar_wrapper{
+width:30%!important;
+}
+#rightmenu{
+margin-top: 20%!important;
+right: 0;
+top: 30%;
+}
+.post_wrapper{
+min-height:340px;
+}
+#custom_logo:hover{
+background:none!important;
+}
+.main_nav ul li a, .main_nav li a{
+font-family:forgottenfuturist;
+font-size: 17px;
+padding-top: 10px;
+/*font-weight: bolder;*/
+}

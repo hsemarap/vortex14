@@ -41,6 +41,8 @@ global $pageId,$userId;
 <link rel='stylesheet' id='colorpicker.css-css'  href='<?php echo $TEMPLATEBROWSERPATH; ?>/js/colorpicker/css/colorpicker.css' type='text/css' media='all' />
 <link rel='stylesheet' id='google_fonts-css'  href='<?php echo $TEMPLATEBROWSERPATH; ?>/css/gfont.css' type='text/css' media='all' />
 <link rel='stylesheet' id='wp-postratings-css'  href='<?php echo $TEMPLATEBROWSERPATH; ?>/css/postratings-css.css' type='text/css' media='all' />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $TEMPLATEBROWSERPATH; ?>/css/main.css" />
+
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/jquery.js'></script>
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/jquery.cookie.js'></script>
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/jquery-ui.js'></script>
@@ -61,6 +63,7 @@ global $pageId,$userId;
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/jquery.isotope.js'></script>
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/gmap.js'></script>
 <script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/custom.js'></script>
+<script type='text/javascript' src='<?php echo $TEMPLATEBROWSERPATH; ?>/js/main.js'></script>
 <style type="text/css">
 .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
 </style>
@@ -106,8 +109,8 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 		<div id="header_wrapper">
 			<div class="standard_wrapper">
 				<div class="menu-main-menu-container"><ul id="main_menu" class="main_nav" style="width:auto">
-				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:15px'>Vortex 14</h1></a></li>
-				<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-533"><a href="/">Home</a></li>
+				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='display:none;height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:0px'>Vortex 14</h1></a></li>
+				<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-533"><a href="/">Home</a></li>
 <!--
 <li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534"><a href="#footer">About Vortex</a>
 <ul class="sub-menu">
@@ -127,12 +130,7 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 </ul>
 </div>			
 				<div id="menu_border_wrapper"></div>
-				<div class="social_wrapper">
-				    <ul>
-			    	<li><a target="_blank" href="http://facebook.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt="Vortex Facebook Page"/></a></li>
-					<li><a target="_blank" href="http://twitter.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/twitter.png" alt="Vortex Twitter Page"/></a></li>
-				    </ul>
-				</div>
+<!-- Old Social -->
 			</div>
 		</div>
 		<br class="clear"/>							
@@ -217,7 +215,19 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
     			e.preventDefault();
 			});
 			$(".div_topnav:first .topnav li").each(function(){
-				$(this).addClass("menu-item menu-item-type-custom menu-item-object-custom");
+				
+$(this).addClass("menu-item menu-item-type-custom menu-item-object-custom");
+var pagename='<?php echo $GLOBALS['_GET']['page']?>';
+pagename=pagename.slice(1,pagename.length);
+var page='http://<?php echo $GLOBALS['_SERVER']["SERVER_NAME"].$GLOBALS['_SERVER']["REDIRECT_URL"]?>';
+var pagelink=$(this).find('a').attr('href');
+//alert($(this).find('a').attr('href'));
+//alert($(this).find('a').attr('href')+'  , '+page+pagename);
+//alert(pagelink+' ,'+(page+pagename));
+if(pagelink==(page+pagename)){
+	$(this).addClass("current-menu-item");
+	$(this).addClass("current_page_item");
+}
 				$("#main_menu").append($(this));
 			});
 			$(".cms-actionbarModuleItem").each(function(){
@@ -287,6 +297,7 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 
 		});
 		</script>
+<?php //var_dump($GLOBALS);?>
 	
 		<div id="content_wrapper">
 			
@@ -456,11 +467,20 @@ $j(window).load(function() {
 		<div class="footer_wrapper">
 		
 		<div id="footer">
+				<div class="social_wrapper" style='margin-top:6%'>
+<h2 class="widgettitle">Follow us on</h2>
+				    <ul>
+			    	<li><a target="_blank" href="http://facebook.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt="Vortex Facebook Page"/></a></li>
+					<li><a target="_blank" href="http://twitter.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/twitter.png" alt="Vortex Twitter Page"/></a></li>
+				    </ul>
+				</div>
+
 			<ul class="sidebar_widget">
 				<li id="text-3" class="widget widget_text"><h2 class="widgettitle">About Vortex</h2>
 			<div class="textwidget">Vortex '14 - Footer Text
 <br/><br/>
 </div>
+
 		</li>
 			</ul>			
 			<br class="clear"/>		
@@ -468,12 +488,6 @@ $j(window).load(function() {
 		<div id="copyright">
 			<div class="standard_wrapper wide">
 			<div id="copyright_left" style="float:center">Copyright &copy; 2014 Vortex '14. All rights reserved.</div>
-			<div class="social_wrapper" style="bottom: 25px;position: relative;">
-			    <ul>
-					<li><a href="http://twitter.com/"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/twitter.png" alt=""/></a></li>
-					<li><a href="http://facebook.com/vortex.nitt"><img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt=""/></a></li>
-			    </ul>
-			</div>
 			</div>
 		</div>
 		
