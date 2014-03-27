@@ -186,8 +186,8 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 		</div>
 		<?php 
 		if($userId==0){
-			echo "<div id='loginpanel' style='display:none;position:absolute;top:15%;left:25%;z-index:2;padding:10%;background:rgba(20,20,20,0.6);border:2px groove black;height:30%;width:25%;'>
-			<div class='close' style='position:absolute;top:0px;right:0px;cursor:pointer' onclick='$(\"#loginpanel\").fadeOut(\"slow\")'><img style='height:30px' class='override' src='images/close.png'></div>
+			echo "<div id='loginpanel' style='display:none;position:absolute;top:8.5%;right:6%;z-index:2;padding:2%;background:rgba(25,25,25,0.8);border:2px groove black;height:30%;width:25%;'>
+			<div class='close' style='position:absolute;top:0px;right:0px;cursor:pointer' onclick='$(\"#loginpanel\").slideUp(\"slow\")'><img style='height:30px' class='override' src='images/close.png'></div>
 			<form method='POST' class='registrationform' name='user_loginform' id='pragyan_loginform' action='./+login'>
 			<h2 style='color:white'>Login</h2>
 			<table>
@@ -205,15 +205,17 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 		?>
 		<script>
 		$=$j;
+
 		$(function(){
 			var cmscontent=$("#cms-content").detach();
 			$("#content_wrapper").before(cmscontent);
 			var breadcrumb=$(".cms-breadcrumbsubmenu").detach();
 			$(".cms-actionlogin").live('click',function(e){
-				$("#loginpanel").fadeIn("slow");
+				$("#loginpanel").slideDown("slow");
 				e.stopPropagation();
     			e.preventDefault();
 			});
+
 			$(".div_topnav:first .topnav li").each(function(){
 				
 $(this).addClass("menu-item menu-item-type-custom menu-item-object-custom");
@@ -230,6 +232,7 @@ if(pagelink==(page+pagename)){
 }
 				$("#main_menu").append($(this));
 			});
+
 			$(".cms-actionbarModuleItem").each(function(){
 				$("#rightmenu .posts").append('<li><strong class="title">'+$(this).html()+'</li>');
 				$(this).detach();
@@ -378,7 +381,14 @@ $j(window).load(function() {
     		$j('#slider_wrapper .flex-control-nav li').css('width', slide_control_width+'%');
       	}
     });
+//    alert('asdf');
 });</script> 
+				<?php echo $INFOSTRING; ?>
+				<?php echo $WARNINGSTRING;?>
+				<?php echo $ERRORSTRING; ?>
+				<?php if(isset($WIDGETS[2])) echo $WIDGETS[2]; ?>
+				<?php if(isset($WIDGETS[3])) echo $WIDGETS[3]; ?>
+
 
  					<div class="sidebar_content">																
 						<div class="post_wrapper">    	
@@ -390,12 +400,7 @@ $j(window).load(function() {
 							    </div>						    
 							    <div class="post_wrapper_inner" id='cms-first-text'>							    
 			<div id="cms-content">
-				<?php echo $INFOSTRING; ?>
-				<?php echo $WARNINGSTRING;?>
-				<?php echo $ERRORSTRING; ?>
-				<?php if(isset($WIDGETS[2])) echo $WIDGETS[2]; ?>
 				<?php echo $CONTENT; ?>
-				<?php if(isset($WIDGETS[3])) echo $WIDGETS[3]; ?>
 			</div>
 
 								</div>    
@@ -404,8 +409,8 @@ $j(window).load(function() {
 						<br class="clear">
 					</div>
 					<div class="sidebar_wrapper" id='rightmenu' style="/*right:1%;top:76%;position: absolute;*/">
-						<div class="sidebar" style='width:30%;'>					                                         
-					    	<div class="content" style='float:right'>					    
+						<div class="sidebar" style='width:25%;'>					                                         
+					    	<div class="content" style='float:right;width:100%'>					    
 					    		<ul class="sidebar_widget">
 					    		<li id="custom_cat_posts-2" class="widget Custom_Cat_Posts">
 					    		<ul class="posts">
