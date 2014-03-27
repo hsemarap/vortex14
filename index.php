@@ -199,8 +199,7 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 								</tr>
 			</table>
 			</form>
-			<a href='./+login&subaction=register' style='position:absolute;right:2%;bottom:2%'><button>Sign Up</button></a>
-			</div>";
+			<a href='./+login&subaction=register' style='position:absolute;right:2%;bottom:2%'><button>Sign Up</button></a></div>";
 		}
 		?>
 		<script>
