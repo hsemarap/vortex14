@@ -404,8 +404,8 @@ $j(window).load(function() {
 						<br class="clear">
 					</div>
 					<div class="sidebar_wrapper" id='rightmenu' style="/*right:1%;top:76%;position: absolute;*/">
-						<div class="sidebar" style='width:40%;'>					    
-					    	<div class="content">					    
+						<div class="sidebar" style='width:30%;'>					                                         
+					    	<div class="content" style='float:right'>					    
 					    		<ul class="sidebar_widget">
 					    		<li id="custom_cat_posts-2" class="widget Custom_Cat_Posts">
 					    		<ul class="posts">
@@ -413,6 +413,9 @@ $j(window).load(function() {
 					    		<br class="clear"></li>
 					    	</div>					
 					    </div>
+					        <div id='rightmenu_pull'>
+						<img src='<?php echo $TEMPLATEBROWSERPATH;?>/images/arrow_left.png' height='50'/>
+						</div>
 					    <br class="clear">
 					</div>
 

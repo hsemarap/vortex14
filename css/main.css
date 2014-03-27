@@ -22,9 +22,22 @@ background: #AAA!important;
 width:30%!important;
 }
 #rightmenu{
-margin-top: 20%!important;
+/*margin-top: 20%!important;*/
 right: 0;
-top: 30%;
+/*top: 30%;*/
+position: fixed;
+right: 0px;
+top: 3%;
+}
+#rightmenu_pull{
+float:right;
+height:15%;
+transform:rotate(180deg);
+-ms-transform:rotate(180deg); /* IE 9 */
+-webkit-transform:rotate(180deg);
+cursor:pointer;
+/*background:url('../images/arrow_left.png') no-repeat;*/
+background-size:100%;
 }
 .post_wrapper{
 min-height:340px;
