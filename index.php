@@ -186,7 +186,7 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 		</div>
 		<?php 
 		if($userId==0){
-			echo "<div id='loginpanel' style='display:none;position:absolute;top:8.5%;right:6%;z-index:2;padding:2%;background:rgba(25,25,25,0.8);border:2px groove black;height:30%;width:25%;'>
+			echo "<div id='loginpanel' style='display:none;position:fixed;top:8.5%;right:6%;z-index:2;padding:2%;background:rgba(25,25,25,0.8);border:2px groove black;height:30%;width:25%;'>
 			<div class='close' style='position:absolute;top:0px;right:0px;cursor:pointer' onclick='$(\"#loginpanel\").slideUp(\"slow\")'><img style='height:30px' class='override' src='images/close.png'></div>
 			<form method='POST' class='registrationform' name='user_loginform' id='pragyan_loginform' action='./+login'>
 			<h2 style='color:white'>Login</h2>
@@ -206,7 +206,8 @@ if(isset($WIDGETS[1])) echo $WIDGETS[1];
 		$=$j;
 
 		$(function(){
-			var cmscontent=$("#cms-content").detach();
+			var cmscontent=$($("#cms-content").detach()).html();
+			//alert(cmscontent);
 			$("#content_wrapper").before(cmscontent);
 			var breadcrumb=$(".cms-breadcrumbsubmenu").detach();
 			$(".cms-actionlogin").live('click',function(e){
@@ -257,8 +258,10 @@ if(pagelink==(page+pagename)){
 			var tmptext,tmphead,tmpbody;
 			var ct=0
 			if($(".text-block").length==0){
-				$("#cms-first-text").html($("#cms-content"));
+//			alert('0');
+				$("#cms-first-text").html($("#cms-content").html());
 			}
+//			alert($(".text-block").length);
 			$(".text-block").each(function(){
 				tmphead=tmpbody="";
 				txtblock='<div class="sidebar_content"'+(ct>0?' style="float:left" ':'')+'><div class="post_wrapper"><div class="post_inner_wrapper">';
@@ -268,16 +271,27 @@ if(pagelink==(page+pagename)){
 						tmphead=$(this).find(".header").html();
 					}
 				txtblock+='<div class="post_wrapper_inner">';
+				//alert($(this).find(".text .half").html());
 				if($(this).find(".text").length){
-					if($(this).find(".text .half")!=[] && $(this).find(".text .half").length){
-						if($(this).find(".text .half:first img"))$(this).find(".text .half:first img").addClass("post_img");
-						tmptext=$(this).find(".text .half:first").html();
+					if($(this).find(".half .text")!=[] && $(this).find(".half .text").length){
+						if($(this).find(".half:first .text img"))
+						     $(this).find(".half:first .text img").addClass("post_img");
+						tmptext=$(this).find(".half:first .text").html();						
+					if($(this).find(".half").length>1){
 						txtblock+='<div class="one_half">'+tmptext+'</div>';
 						tmpbody+='<div class="one_half">'+tmptext+'</div>';
-						if($(this).find(".text .half:last img"))$(this).find(".text .half:last img").addClass("post_img");
-						tmptext=$(this).find(".text .half:last").html();
+						if($(this).find(".half:last .text img"))
+						     $(this).find(".half:last .text img").addClass("post_img");
+						tmptext=$(this).find(".half:last .text").html();
 						txtblock+='<div class="one_half last">'+tmptext+'</div>';					
 						tmpbody+='<div class="one_half last">'+tmptext+'</div>';
+//						alert(tmpbody);
+						}		
+						else {
+						txtblock+='<div class="">'+tmptext+'</div>';
+						tmpbody+='<div class="">'+tmptext+'</div>';
+
+						}
 					}else{
 						txtblock+=$(this).find(".text").html();
 					}
@@ -407,7 +421,7 @@ $j(window).load(function() {
 						</div>
 						<br class="clear">
 					</div>
-					<div class="sidebar_wrapper" id='rightmenu' style="/*right:1%;top:76%;position: absolute;*/">
+					<div class="sidebar_wrapper" id='rightmenu' style="top:7%;/*right:1%;top:76%;position: absolute;*/">
 						<div class="sidebar" style='width:25%;'>					                                         
 					    	<div class="content" style='float:right;width:100%'>					    
 					    		<ul class="sidebar_widget">
@@ -418,7 +432,7 @@ $j(window).load(function() {
 					    	</div>					
 					    </div>
 					        <div id='rightmenu_pull'>
-						<img src='<?php echo $TEMPLATEBROWSERPATH;?>/images/arrow_left.png' height='50'/>
+						<img src='<?php echo $TEMPLATEBROWSERPATH;?>/images/arrow_right.png' height='35' style='height:35px'/>
 						</div>
 					    <br class="clear">
 					</div>

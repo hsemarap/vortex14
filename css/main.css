@@ -32,12 +32,15 @@ top: 3%;
 #rightmenu_pull{
 float:right;
 height:15%;
-transform:rotate(180deg);
--ms-transform:rotate(180deg); /* IE 9 */
--webkit-transform:rotate(180deg);
 cursor:pointer;
 /*background:url('../images/arrow_left.png') no-repeat;*/
 background-size:100%;
+transition:1s;
+}
+.flip_h{
+transform:rotate(180deg);
+-ms-transform:rotate(180deg); /* IE 9 */
+-webkit-transform:rotate(180deg);
 }
 .post_wrapper{
 min-height:340px;
