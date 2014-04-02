@@ -111,22 +111,6 @@ body { background: url(<?php echo $TEMPLATEBROWSERPATH; ?>/images/bg-body.jpg) r
 				<div class="menu-main-menu-container"><ul id="main_menu" class="main_nav" style="width:auto">
 				<li id='main_logo' class='menu-item menu-item-type-custom menu-item-object-custom'><a id='custom_logo' style='height:50px;padding:0px'  href='./'><img src='images/vortex_logo.png' style='display:none;height:100%' class='rotate_once override' alt=''/><h1 style='display:inline;color:white;padding-right:18px;position:relative;bottom:0px'>Vortex 14</h1></a></li>
 				<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-533"><a href="/">Home</a></li>
-<!--
-<li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534"><a href="#footer">About Vortex</a>
-<ul class="sub-menu">
-	<li id="menu-item-536" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-536">
-	<a href="">Events</a>	</li>
-	<li id="menu-item-537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-537">
-	<a href="">Workshops</a></li>
-	<li id="menu-item-800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-800">
-	<a href="">Sponsors</a>	</li>
-	<li id="menu-item-540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-540">
-	<a href="">Contacts</a></li>
-	<li id="menu-item-541" class="menu-item menu-item-type-post_type menu-item-object-gallery menu-item-541">
-	<a href="">Gallery</a></li>
-</ul>
-</li>
--->
 </ul>
 </div>			
 				<div id="menu_border_wrapper"></div>
@@ -438,6 +422,8 @@ $j(window).load(function() {
 					</div>
 
 					<div class="sidebar_wrapper">
+<?php if($pageId==0){
+$html=<<<DOC
 						<div class="sidebar">					    
 					    	<div class="content">					    
 					    		<ul class="sidebar_widget">
@@ -449,29 +435,28 @@ $j(window).load(function() {
 					    		
 					    		</ul>
 					    		<br class="clear"/></li>
-<li id="custom_social_counter-2" class="widget Custom_Social_Counter">		    <div class="social_profile">
+<li id="custom_social_counter-2" class="widget Custom_Social_Counter">		    
+<div class="social_profile">
 					<div class="post_header" style="width:100%;padding:0;margin:0">
-			        	<h3>Like us on Facebook</h3>
+			        	<h3>Quick Links</h3>
 			        </div>
 					<div class="profile">
-<!--		        	<a href="http://facebook.com/vortex.nitt">
-		        		<img src="<?php echo $TEMPLATEBROWSERPATH; ?>/images/facebook.png" alt="" class="social"/>
-		        	</a>
--->		        	<div class="counter">
-<div class="fb-like" data-href="https://www.facebook.com/vortex.nitt" data-width="10" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>		        	</div>
+		        	<div class="counter">
+<!--hidden-->
+<div style='display:none' class="fb-like" data-href="https://www.facebook.com/vortex.nitt" data-width="10" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>		        	</div>
 		        </div>
 		    </div>
 </li>
-<!--
-<li id="custom_facebook_page-3" class="widget Custom_Facebook_Page"><h2 class="widgettitle">Find us on Facebook</h2>
-<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fenvato&amp;width=295&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23ffffff&amp;stream=false&amp;header=false&amp;appId=268239076529520" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:295px; height:258px;" allowTransparency="true"></iframe>
-</li>
--->
 </ul>
 					    	
 					    	</div>
 					
 					    </div>
+DOC;
+echo $html;
+}
+?>							
+
 					    <br class="clear"/>
 
 					</div>
